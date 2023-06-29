@@ -91,6 +91,7 @@ const SearchBar = () => {
       setError(null);
       const response = await axios.get(`${API_URL}?search_text=${searchText}`);
       setSearchResults(response.data.Response.Result);
+      console.log("response.data.Response.Result", response.data.Response.Result)
       navigate("/searchresult", { state: { searchResults: response.data.Response.Result, searchText: searchText } });
     } catch (error) {
       setError("An error occurred while fetching the search results.");

@@ -24,16 +24,16 @@ const SingleProduct = () => {
   const {
     product_id: alias,
     product_name,
-    brand,
+    brand_name,
     selling_mrp_price,
     discount_price,
     product_category,
-    total_available_quantity,
-    model_img_url,
+    quantity,
+    image_url,
     discount_percentage,
-    reviews,
-    available_model_colors_list,
-    stars,
+    // reviews,
+    available_colors,
+    // stars,
   } = singleProduct;
   // console.log("TOTAL1", singleProduct)
 
@@ -52,13 +52,13 @@ const SingleProduct = () => {
         <div className="grid grid-two-column">
           {/* product Images  */}
           <div className="product_images">
-            <MyImage model_img_url={model_img_url} />
+            <MyImage image_url={image_url} />
           </div>
 
           {/* product dAta  */}
           <div className="product-data">
             <h2>{product_name}</h2>
-            <Star stars={stars} reviews={reviews} />
+            {/* <Star stars={stars} reviews={reviews} /> */}
             <p className="product-data-price">  
               MRP:
               <del>
@@ -100,16 +100,16 @@ const SingleProduct = () => {
             <div className="product-data-info">
               <p>
                 Available:
-                <span> {total_available_quantity > 0 ? "In Stock" : "Not Available"}</span>
+                <span> {quantity > 0 ? "In Stock" : "Not Available"}</span>
               </p>
               <p>
                 Category : <span> {product_category} </span>
               </p>
               <p>
-                Brand :<span> {brand} </span>
+                Brand :<span> {brand_name} </span>
               </p>
               <hr />
-            {total_available_quantity > 0 && <AddToCart product={singleProduct} />}
+            {quantity > 0 && <AddToCart product={singleProduct} />}
             </div>
           </div>
         </div>

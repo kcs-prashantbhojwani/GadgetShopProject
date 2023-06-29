@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const MyImage = ({model_img_url}) => {
+const MyImage = ({image_url}) => {
 //   const {model_img_url} = useState();
 // console.log(
 //     "🚀 ~ file: SingleProduct.js ~ line 6 ~ model_img_url ~ model_img_url",
@@ -11,7 +11,7 @@ const MyImage = ({model_img_url}) => {
     <Wrapper>
     <div className="main-screen">
         <figure>
-        <img src={model_img_url}  />
+        <img src={image_url}  />
         </figure>
     </div>
     

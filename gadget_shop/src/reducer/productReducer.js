@@ -22,17 +22,23 @@ const ProductReducer = (state, action) => {
       };
 
     case "SET_API_DATA":
-      const featureData = action.payload.filter((curElem) => {
-        return curElem.product_if_available === "AVAILABLE";
-      });
-
+      // const featureData = action.payload.filter((curElem) => {
+      //   console.log("cur",curElem)
+      //   return curElem.product_inventory === "true";
+      // });
+      // {filterProducts.map((curElem) => {
+      //   return <Product key={curElem.product_id} {...curElem}
+      const feature = action.payload.map((curElem) => {
+        return curElem
+      })
+      
       return {
         ...state,
         isLoading: false,
         products: action.payload,
-        featureProducts: featureData,
+        featureProducts: feature,
       };
-
+    
     case "API_ERROR":
       return {
         ...state,

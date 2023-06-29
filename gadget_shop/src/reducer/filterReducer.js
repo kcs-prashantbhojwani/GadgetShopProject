@@ -9,7 +9,7 @@ const FilterReducer = (state, action) => {
   
       case "SET_API_DATA":
         const filterData = action.payload.filter((curElem) => {
-          return curElem.product_if_available === "AVAILABLE";
+          return curElem.product_inventory === "true";
         });
   
         return {
@@ -71,7 +71,7 @@ const FilterReducer = (state, action) => {
       case "FILTER_PRODUCTS":
         let {filterProducts} = state;
         let tempFilterProduct = [...filterProducts];
-        const {text, product_category, brand, available_model_colors_list} = state.filters;
+        const {text, product_category, brand_name, available_colors} = state.filters;
         if (text){
           tempFilterProduct = tempFilterProduct.filter((curElem) => {
             return curElem.product_name.toLowerCase().includes(text);
@@ -82,13 +82,13 @@ const FilterReducer = (state, action) => {
             return curElem.product_category === product_category;
           });
         }
-        if (brand !== "all") {
+        if (brand_name !== "all") {
           tempFilterProduct = tempFilterProduct.filter(
-            (curElem) => curElem.brand.toLowerCase() === brand.toLowerCase()
+            (curElem) => curElem.brand_name.toLowerCase() === brand_name.toLowerCase()
           );
         }
-        if (available_model_colors_list !== "all" ) {
-          tempFilterProduct = tempFilterProduct.filter((curElem) => curElem.available_model_colors_list.includes(available_model_colors_list));
+        if (available_colors !== "all" ) {
+          tempFilterProduct = tempFilterProduct.filter((curElem) => curElem.available_colors.includes(available_colors));
         }
         
         return{
@@ -104,8 +104,8 @@ const FilterReducer = (state, action) => {
               ...state.filters,
               text: "",
               product_category: "all",
-              brand: "all",
-              available_model_colors_list: "all",
+              brand_name: "all",
+              available_colors: "all",
             },
           };
             

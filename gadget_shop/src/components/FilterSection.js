@@ -4,7 +4,7 @@ import { Button } from "../styles/Button";
 import {FaCheck} from "react-icons/fa"
 
 const FilterSection = () => {
-  const { filters: {text, product_category, brand, available_model_colors_list},
+  const { filters: {text, product_category, brand_name, available_colors},
   filterProducts, 
   updateFilterValue,
   clearFilters,
@@ -15,15 +15,15 @@ const getUniqueData = (data, attr) => {
     return curElem[attr];
   });
 
-  if (attr === "available_model_colors_list"){
+  if (attr === "available_colors"){
     newVal = newVal.flat();
   }
   return(newVal = ["all", ...new Set(newVal)]);
 };
 
 const categoryOnlyData = getUniqueData(filterProducts, "product_category")
-const brandsData = getUniqueData(filterProducts, "brand")
-const colorsData = getUniqueData(filterProducts, "available_model_colors_list")
+const brandsData = getUniqueData(filterProducts, "brand_name")
+const colorsData = getUniqueData(filterProducts, "available_colors")
 
 
   return (
@@ -66,7 +66,7 @@ const colorsData = getUniqueData(filterProducts, "available_model_colors_list")
               <button
                 key={index}
                 type="button"
-                name="brand"
+                name="brand_name"
                 value={curElem}
                 onClick={updateFilterValue}>
                 {curElem}
@@ -86,7 +86,7 @@ const colorsData = getUniqueData(filterProducts, "available_model_colors_list")
                   key={index}
                   type="button" 
                   value={curColor}
-                  name="available_model_colors_list"
+                  name="available_colors"
                   className="color-all--style"
                   onClick={updateFilterValue}>
                   all
@@ -98,11 +98,11 @@ const colorsData = getUniqueData(filterProducts, "available_model_colors_list")
                 key={index}
                 type="button" 
                 value={curColor}
-                name="available_model_colors_list"
+                name="available_colors"
                 style={{backgroundColor: curColor}}
-                className={available_model_colors_list === curColor ? "btnStyle active": "btnStyle"}
+                className={available_colors === curColor ? "btnStyle active": "btnStyle"}
                 onClick={updateFilterValue}>
-                  {available_model_colors_list === curColor ? <FaCheck className="checkStyle"/>: null}
+                  {available_colors === curColor ? <FaCheck className="checkStyle"/>: null}
                 </button>
               )
             })}

@@ -18,14 +18,14 @@ const initialState = {
   filters:{
     text: "",
     product_category: "all",
-    brand: "all",
-    available_model_colors_list: "all",
+    brand_name: "all",
+    available_colors: "all",
   },
 };
 
 const FilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-    const [data, setData] = useState("")
+  const [data, setData] = useState("")
     // console.log("datamain1", data)
 
 
@@ -35,6 +35,7 @@ const FilterProvider = ({ children }) => {
       const res = await axios.get(url);
       const products = await res.data.Response.Result;
       setData(products);
+      console.log("producs", products)
       dispatch({ type: "SET_API_DATA", payload: products });
     } catch (error) {
       dispatch({ type: "API_ERROR" });

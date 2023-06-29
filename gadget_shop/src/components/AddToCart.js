@@ -9,8 +9,8 @@ import { useCartContext } from "../context/cartContext";
 const AddToCart = ({ product }) => {
 
   const {addToCart} = useCartContext();
-  const { product_id, available_model_colors_list, total_available_quantity } = product;
-  const [color, setColor] = useState(available_model_colors_list[0]);
+  const { product_id, available_colors, quantity } = product;
+  const [color, setColor] = useState(available_colors[0]);
   const [amount, setAmount] = useState(1);
 
   const setDecrease = () => {
@@ -18,7 +18,7 @@ const AddToCart = ({ product }) => {
   };
 
   const setIncrease = () => {
-    amount < total_available_quantity ? setAmount(amount + 1) : setAmount(total_available_quantity);
+    amount < quantity ? setAmount(amount + 1) : setAmount(quantity);
   };
 
   return (
@@ -26,7 +26,7 @@ const AddToCart = ({ product }) => {
       <div className="colors">
         <p>
           Color:
-          {available_model_colors_list.map((curColor, index) => {
+          {available_colors.map((curColor, index) => {
             return (
               <button
                 key={index}

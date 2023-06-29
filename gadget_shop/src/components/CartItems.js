@@ -4,7 +4,7 @@ import CartAmountToggle from './CartAmountToggle'
 import { FaTrash } from 'react-icons/fa'
 import { useCartContext } from '../context/cartContext'
 
-const CartItems = ({product_id, product_name, model_img_url, color, discount_price, amount}) => {
+const CartItems = ({product_id, product_name, image_url, color, discount_price, amount}) => {
     // console.log("modelImgae", discount_price)
     const {removeItem, setDecrement, setIncrement} = useCartContext();
 
@@ -13,7 +13,7 @@ const CartItems = ({product_id, product_name, model_img_url, color, discount_pri
         <div className='cart-image--name'>
             <div>
                 <figure>
-                    <img src={model_img_url} alt={product_id}/>
+                    <img src={image_url} alt={product_id}/>
                 </figure>
             </div>
             <div className='color-div'>

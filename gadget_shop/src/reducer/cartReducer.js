@@ -36,9 +36,9 @@ const cartReducer = (state, action) => {
           product_name: product.product_name,
           color,
           amount,
-          model_img_url: product.model_img_url,
+          image_url: product.image_url,
           discount_price: product.discount_price,
-          max: product.total_available_quantity,
+          max: product.quantity,
         }
         // console.log("cartProduct", cartProduct)
         return {
